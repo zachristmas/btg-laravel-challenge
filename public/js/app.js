@@ -5262,6 +5262,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -5300,9 +5302,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      articles: []
+    };
+  },
   mounted: function mounted() {
+    var _this = this;
+
     console.log('Welcome to the BTG Challenge!.');
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/articles').then(function (response) {
+      // handle success
+      _this.articles = response.data;
+    })["catch"](function (error) {
+      // handle error
+      console.log(error);
+    }).then(function () {// always executed
+    });
   }
 });
 
@@ -27915,68 +27937,79 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("br"),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Articles Should Render Below"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "ul",
+              { attrs: { id: "example-1" } },
+              _vm._l(_vm.articles, function (article) {
+                return _c("li", { key: article.id }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(article.title) +
+                      "\n                        "
+                  ),
+                ])
+              }),
+              0
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("br"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("BTG Laravel Challenge"),
-            ]),
+    return _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("BTG Laravel Challenge"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", [_vm._v("Challenge is broken up into 3 parts:")]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h4", [_vm._v("Challenge is broken up into 3 parts:")]),
+            _c("ol", [
+              _c("li", [_vm._v("Get connected to the development server.")]),
               _vm._v(" "),
-              _c("ol", [
-                _c("li", [_vm._v("Get connected to the development server.")]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("Create API Controller to GET items from "),
-                  _c("strong", [_vm._v("articles")]),
-                  _vm._v(" table in the "),
-                  _c("strong", [_vm._v("laravel")]),
-                  _vm._v(" mysql database."),
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "Call API controller from this component and render it below."
-                  ),
-                ]),
+              _c("li", [
+                _vm._v("Create API Controller to GET items from "),
+                _c("strong", [_vm._v("articles")]),
+                _vm._v(" table in the "),
+                _c("strong", [_vm._v("laravel")]),
+                _vm._v(" mysql database."),
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("li", [
                 _vm._v(
-                  "\n                        Feel free to ask questions or google as you would doing this on your own.\n                    "
+                  "Call API controller from this component and render it below."
                 ),
               ]),
             ]),
-          ]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Articles Should Render Below"),
-            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
+            _c("p", [
               _vm._v(
-                "\n                    Render Articles Here.\n                "
+                "\n                        Feel free to ask questions or google as you would doing this on your own.\n                    "
               ),
             ]),
           ]),
@@ -40221,6 +40254,18 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	

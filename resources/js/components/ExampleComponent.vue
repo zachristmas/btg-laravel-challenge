@@ -28,7 +28,11 @@
                     <div class="card-header">Articles Should Render Below</div>
 
                     <div class="card-body">
-                        Render Articles Here.
+                        <ul id="example-1">
+                            <li v-for="article in articles" :key="article.id">
+                                {{ article.title }}
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -37,9 +41,28 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
+        data: function () {
+            return {
+                articles: []
+            }
+        },
         mounted() {
-            console.log('Welcome to the BTG Challenge!.')
+            console.log('Welcome to the BTG Challenge!.');
+            axios.get('/api/articles')
+            .then((response) => {
+                // handle success
+                this.articles = response.data;
+            })
+            .catch((error) => {
+                // handle error
+                console.log(error);
+            })
+            .then(() => {
+                // always executed
+            });
         }
     }
 </script>
